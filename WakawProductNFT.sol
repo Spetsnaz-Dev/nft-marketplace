@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
 
 contract WakawProductNFT is ERC721URIStorage, EIP712, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-    string private constant WAKAW_BRAND = "ProductNFT-Voucher";
+    string private constant WAKAW_BRAND = "NFT-Voucher";
     string private constant SIGNATURE_VERSION = "1";
     uint256 public totalSupply;
     uint256 public mintCost;
@@ -27,8 +27,7 @@ contract WakawProductNFT is ERC721URIStorage, EIP712, AccessControl {
     mapping(uint256 => bool) public tokenIdForSale;
     mapping(uint256 => string) public _tokenURIs; // Mapping for token URIs
     mapping(address => uint256) pendingWithdrawals;
-    // map cryptoboy's token id to crypto boy
-    mapping(uint256 => NFTVoucher) public allNFTVoucher;
+    mapping(uint256 => NFTVoucher) public allNFTVoucher;    // map token id to NFTVoucher
 
     event TokenPurchased(address account, uint256 amount, uint256 rate);
     event TokenSold(address account, uint256 amount, uint256 rate);
